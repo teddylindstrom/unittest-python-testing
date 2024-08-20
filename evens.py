@@ -1,13 +1,3 @@
-
-There are a few issues with the code in both test_evens.py and evens.py:
-
-1. test_evens.py
-Syntax Error in the TestEvens Class: You are missing a colon (:) after the class definition.
-Incorrect if Statement: The if statement should check for __name__ == '__main__' (with double underscores).
-Corrected test_evens.py:
-
-python
-Copy code
 def even_number_of_evens(numbers):
     """
     Should Raise a TypeError if a list in not passed into the function
@@ -17,13 +7,21 @@ def even_number_of_evens(numbers):
     if the numner of even numbers is even - return True
     """
     if isinstance(numbers, list):
-        if number == []:
+        if numbers == []:
+            return False
+        else:
+            evens = 0
+            
+        for n in numbers:
+            if n % 2 == 0:
+                evens += 1
+        if evens:
+            return evens % 2 == 0
+        else:
             return False
     else:
-        return True 
-    else:
         raise TypeError("A list was not passed into the function")
+    return None
 
-
-if __name__== '__main__':
-print(even_number_of_evens([5]))  # Example usage
+if __name__ == "__main__":
+    print(even_number_of_evens(5))
